@@ -8,3 +8,6 @@ How to install and run:
 2. extract the file
 3. run the file with any software that can run C++ for example Visual Studio
 4. Click the build and run button in your IDE or compile it manually to start playing.
+
+
+IMPORTANT: if you want to modify how fast the snake moves if you go into game.cpp and find the init method, change the value for SetTargetFPS and it will modify snake speed.
