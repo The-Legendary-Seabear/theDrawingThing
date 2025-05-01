@@ -3,7 +3,7 @@
 #include "snake.h"
 #include "raymath.h"
 #include "raylib.h"
-#include "../build/build_files/GAME.H"
+#include "game.H"
 
 int main() {
 	Game game;

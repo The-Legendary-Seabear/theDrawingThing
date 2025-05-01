@@ -1,13 +1,14 @@
 #pragma once
-#pragma once
-#include "game.h"
+#include "raylib.h"
 
 class Food {
 private:
     Vector2 position;
 public:
+    Food();
+    ~Food();
     int cellSize = 20;
-    void Spawn();
-    void Draw();
-    Vector2 GetPosition();
+    void spawn();
+    void draw();
+    Vector2 getPosition();
 };

@@ -7,13 +7,22 @@ Snake::Snake()
 
 }
 
-void Snake::update()
+Snake::~Snake()
+{
+}
+
+void Snake::update(Vector2 foodPosition)
 {
 	Vector2 newHead = body.front();
 	newHead.x += direction.x;
 	newHead.y += direction.y;
 	body.push_front(newHead);
-	body.pop_back();
+	if (!shouldGrow) {
+		body.pop_back();
+	}
+	else {
+		shouldGrow = false;
+	}
 }
 
 void Snake::draw()
@@ -26,11 +35,7 @@ void Snake::draw()
 
 void Snake::grow()
 {
-	//The way i think this works is that on the cell that we eat the apple the game doesn't get updated right away, so when the game updates and the snake goes forward one cell
-	//The game updates with the head in the new cell and we push back the body to create the new length after eating the apple.
-	Vector2 tail = body.back();
-	body.push_back(tail);
-	
+	shouldGrow = true;
 }
 
 bool Snake::checkCollision()
@@ -45,7 +50,7 @@ bool Snake::checkCollision()
 
 	
 	for (int snakeSegment = 1; snakeSegment < body.size(); snakeSegment++) {
-		if (body[snakeSegment].x == head.x || body[snakeSegment].y == head.y) {
+		if (body[snakeSegment].x == head.x && body[snakeSegment].y == head.y) {
 			return true;
 		}
 	}
